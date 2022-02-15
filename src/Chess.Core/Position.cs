@@ -1,7 +1,6 @@
 ﻿namespace Chess.Core
 {
     using System;
-    using static System.Math;
 
     /// <summary>
     /// Defines a coordinate.
@@ -40,12 +39,25 @@
         }
 
         /// <summary>
-        /// Converts the <see cref="Position"/> into a <see cref="string"/>.
+        /// Compares two <see cref="Position"/>s.
         /// </summary>
-        /// <returns>The <see cref="Position"/> as a <see cref="string"/>.</returns>
-        public override string ToString()
+        /// <param name="p1">The first <see cref="Position"/> to compare.</param>
+        /// <param name="p2">The second <see cref="Position"/> to compare.</param>
+        /// <returns><c>true</c> if <paramref name="p1"/> is not equal to <paramref name="p2"/>.</returns>
+        public static bool operator !=(Position p1, Position p2)
         {
-            return $"({this.X}, {this.Y})";
+            return !p1.Equals(p2);
+        }
+
+        /// <summary>
+        /// Compares two <see cref="Position"/>s.
+        /// </summary>
+        /// <param name="p1">The first <see cref="Position"/> to compare.</param>
+        /// <param name="p2">The second <see cref="Position"/> to compare.</param>
+        /// <returns><c>true</c> if <paramref name="p1"/> is equal to <paramref name="p2"/>.</returns>
+        public static bool operator ==(Position p1, Position p2)
+        {
+            return p1.Equals(p2);
         }
 
         /// <summary>
@@ -70,25 +82,12 @@
         }
 
         /// <summary>
-        /// Compares two <see cref="Position"/>s.
+        /// Converts the <see cref="Position"/> into a <see cref="string"/>.
         /// </summary>
-        /// <param name="p1">The first <see cref="Position"/> to compare.</param>
-        /// <param name="p2">The second <see cref="Position"/> to compare.</param>
-        /// <returns><c>true</c> if <paramref name="p1"/> is equal to <paramref name="p2"/>.</returns>
-        public static bool operator ==(Position p1, Position p2)
+        /// <returns>The <see cref="Position"/> as a <see cref="string"/>.</returns>
+        public override string ToString()
         {
-            return p1.Equals(p2);
-        }
-
-        /// <summary>
-        /// Compares two <see cref="Position"/>s.
-        /// </summary>
-        /// <param name="p1">The first <see cref="Position"/> to compare.</param>
-        /// <param name="p2">The second <see cref="Position"/> to compare.</param>
-        /// <returns><c>true</c> if <paramref name="p1"/> is not equal to <paramref name="p2"/>.</returns>
-        public static bool operator !=(Position p1, Position p2)
-        {
-            return !p1.Equals(p2);
+            return $"({this.X}, {this.Y})";
         }
     }
 }

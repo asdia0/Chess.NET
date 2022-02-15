@@ -1,6 +1,5 @@
 ﻿namespace Chess.Core
 {
-    using System;
     using System.Linq;
 
     /// <summary>
@@ -8,6 +7,27 @@
     /// </summary>
     public class Square
     {
+        /// <summary>
+        /// Gets or sets the <see cref="Core.Board"/> the <see cref="Square"/> is on.
+        /// </summary>
+        public Board Board { get; set; }
+
+        /// <summary>
+        /// Gets or sets the x and y coordinates of the <see cref="Square"/>.
+        /// </summary>
+        public Position Coordinates { get; set; }
+
+        /// <summary>
+        /// Gets the number of the square's file.
+        /// </summary>
+        public string File
+        {
+            get
+            {
+                return ((char)this.Coordinates.X + 64).ToString();
+            }
+        }
+
         /// <summary>
         /// Gets or sets the piece <see cref="Core.Piece"/> on the <see cref="Square"/>.
         /// </summary>
@@ -23,27 +43,6 @@
                 return this.Coordinates.Y;
             }
         }
-
-        /// <summary>
-        /// Gets the number of the square's file.
-        /// </summary>
-        public string File
-        {
-            get
-            {
-                return ((char)this.Coordinates.X + 64).ToString();
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets the x and y coordinates of the <see cref="Square"/>.
-        /// </summary>
-        public Position Coordinates { get; set; }
-
-        /// <summary>
-        /// Gets or sets the <see cref="Core.Board"/> the <see cref="Square"/> is on.
-        /// </summary>
-        public Board Board { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Square"/> class.
@@ -66,34 +65,13 @@
         }
 
         /// <summary>
-        /// Returns a string that represents the <see cref="Coordinates"/> of this <see cref="Square"/>.
-        /// </summary>
-        /// <returns>The string representation of the <see cref="Coordinates"/> of this <see cref="Square"/>.</returns>
-        public override string ToString()
-        {
-            return $"{this.File}{this.Rank}";
-        }
-
-        /// <summary>
-        /// Returns the <see cref="Square"/> n squares directly opposite the current <see cref="Square"/>.
-        /// </summary>
-        /// <returns>The <see cref="Square"/> n squares directly opposite the current <see cref="Square"/>.</returns>
-        public Square GetOppositeSquare()
-        {
-            int y = 7 - this.Coordinates.Y;
-            int x = this.Coordinates.X;
-
-            return this.Board.Squares[(y * 8) + x];
-        }
-
-        /// <summary>
-        /// Returns the <see cref="Square"/> n squares above of the current <see cref="Square"/>.
+        /// Returns the <see cref="Square"/> n squares below of the current <see cref="Square"/>.
         /// </summary>
         /// <param name="n">The number of squares.</param>
-        /// <returns>The <see cref="Square"/> n squares above of the current <see cref="Square"/>.</returns>
-        public Square GetNthSquareUp(int n)
+        /// <returns>The <see cref="Square"/> n squares below of the current <see cref="Square"/>.</returns>
+        public Square GetNthSquareDown(int n)
         {
-            int y = this.Coordinates.Y + (8 * n);
+            int y = this.Coordinates.Y - (8 * n);
             int x = this.Coordinates.X;
 
             if (y < 0 || y >= 8)
@@ -112,18 +90,18 @@
         }
 
         /// <summary>
-        /// Returns the <see cref="Square"/> n squares below of the current <see cref="Square"/>.
+        /// Returns the <see cref="Square"/> n squares left of the current <see cref="Square"/>.
         /// </summary>
         /// <param name="n">The number of squares.</param>
-        /// <returns>The <see cref="Square"/> n squares below of the current <see cref="Square"/>.</returns>
-        public Square GetNthSquareDown(int n)
+        /// <returns>The <see cref="Square"/> n squares left of the current <see cref="Square"/>.</returns>
+        public Square GetNthSquareLeft(int n)
         {
-            int y = this.Coordinates.Y - (8 * n);
-            int x = this.Coordinates.X;
+            int y = this.Coordinates.Y;
+            int x = this.Coordinates.X - n;
 
-            if (y < 0 || y >= 8)
+            if (x < 0 || x >= 8)
             {
-                throw new ChessException("Y-coordinate out of range.");
+                throw new ChessException("X-coordinate out of range.");
             }
 
             int sqID = (y * 8) + x;
@@ -162,18 +140,18 @@
         }
 
         /// <summary>
-        /// Returns the <see cref="Square"/> n squares left of the current <see cref="Square"/>.
+        /// Returns the <see cref="Square"/> n squares above of the current <see cref="Square"/>.
         /// </summary>
         /// <param name="n">The number of squares.</param>
-        /// <returns>The <see cref="Square"/> n squares left of the current <see cref="Square"/>.</returns>
-        public Square GetNthSquareLeft(int n)
+        /// <returns>The <see cref="Square"/> n squares above of the current <see cref="Square"/>.</returns>
+        public Square GetNthSquareUp(int n)
         {
-            int y = this.Coordinates.Y;
-            int x = this.Coordinates.X - n;
+            int y = this.Coordinates.Y + (8 * n);
+            int x = this.Coordinates.X;
 
-            if (x < 0 || x >= 8)
+            if (y < 0 || y >= 8)
             {
-                throw new ChessException("X-coordinate out of range.");
+                throw new ChessException("Y-coordinate out of range.");
             }
 
             int sqID = (y * 8) + x;
@@ -184,6 +162,27 @@
             }
 
             return this.Board.Squares[sqID];
+        }
+
+        /// <summary>
+        /// Returns the <see cref="Square"/> n squares directly opposite the current <see cref="Square"/>.
+        /// </summary>
+        /// <returns>The <see cref="Square"/> n squares directly opposite the current <see cref="Square"/>.</returns>
+        public Square GetOppositeSquare()
+        {
+            int y = 7 - this.Coordinates.Y;
+            int x = this.Coordinates.X;
+
+            return this.Board.Squares[(y * 8) + x];
+        }
+
+        /// <summary>
+        /// Returns a string that represents the <see cref="Coordinates"/> of this <see cref="Square"/>.
+        /// </summary>
+        /// <returns>The string representation of the <see cref="Coordinates"/> of this <see cref="Square"/>.</returns>
+        public override string ToString()
+        {
+            return $"{this.File}{this.Rank}";
         }
     }
 }

@@ -6,16 +6,6 @@
     public readonly struct CastlingAvailability
     {
         /// <summary>
-        /// Gets a value indicating whether white can castle kingside.
-        /// </summary>
-        public bool WhiteKingside { get; init; }
-
-        /// <summary>
-        /// Gets a value indicating whether white can castle queenside.
-        /// </summary>
-        public bool WhiteQueenside { get; init; }
-
-        /// <summary>
         /// Gets a value indicating whether black can castle kingside.
         /// </summary>
         public bool BlackKingside { get; init; }
@@ -24,6 +14,16 @@
         /// Gets a value indicating whether black can castle queenside.
         /// </summary>
         public bool BlackQueenside { get; init; }
+
+        /// <summary>
+        /// Gets a value indicating whether white can castle kingside.
+        /// </summary>
+        public bool WhiteKingside { get; init; }
+
+        /// <summary>
+        /// Gets a value indicating whether white can castle queenside.
+        /// </summary>
+        public bool WhiteQueenside { get; init; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="CastlingAvailability"/> struct.

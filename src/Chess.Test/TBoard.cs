@@ -1,7 +1,6 @@
 namespace Chess.Test
 {
     using Microsoft.VisualStudio.TestTools.UnitTesting;
-    using Chess.Core;
 
     [TestClass]
     public class TBoard
@@ -9,7 +8,6 @@ namespace Chess.Test
         [TestMethod]
         public void ConstructorDimensions()
         {
-
         }
     }
 }

@@ -1,8 +1,6 @@
 ﻿namespace Chess.Core
 {
-    using System;
     using System.Collections.Generic;
-    using System.Linq;
 
     /// <summary>
     /// Represents a piece.
@@ -12,9 +10,42 @@
         private Square square;
 
         /// <summary>
+        /// Gets or sets the <see cref="Core.Board"/> the <see cref="Piece"/> is on.
+        /// </summary>
+        public Board Board { get; set; }
+
+        /// <summary>
+        /// Gets or sets the <see cref="Colours"/> of the <see cref="Piece"/>.
+        /// </summary>
+        public Colours Colour { get; set; }
+
+        /// <summary>
         /// Gets or sets a value indicating whether the <see cref="Piece"/> is still on the <see cref="Board"/>.
         /// </summary>
         public bool IsCaptured { get; set; }
+
+        public List<Move> LegalMoves
+        {
+            get
+            {
+                // TODO: Get legal moves
+
+                return new();
+            }
+        }
+
+        /// <summary>
+        /// Gets the list of <see cref="Square"/>s the <see cref="Piece"/> can move to in the current <see cref="Board"/> position.
+        /// </summary>
+        public List<Square> LegalSquares
+        {
+            get
+            {
+                // TODO: Get legal squares
+
+                return new();
+            }
+        }
 
         /// <summary>
         /// Gets or sets the <see cref="Core.Square"/> the <see cref="Piece"/> is on.
@@ -41,39 +72,6 @@
         /// Gets or sets the type of <see cref="Piece"/>.
         /// </summary>
         public Pieces Type { get; set; }
-
-        /// <summary>
-        /// Gets the list of <see cref="Square"/>s the <see cref="Piece"/> can move to in the current <see cref="Board"/> position.
-        /// </summary>
-        public List<Square> LegalSquares
-        {
-            get
-            {
-                // TODO: Get legal squares
-
-                return new();
-            }
-        }
-
-        public List<Move> LegalMoves
-        {
-            get
-            {
-                // TODO: Get legal moves
-
-                return new();
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets the <see cref="Colours"/> of the <see cref="Piece"/>.
-        /// </summary>
-        public Colours Colour { get; set; }
-
-        /// <summary>
-        /// Gets or sets the <see cref="Core.Board"/> the <see cref="Piece"/> is on.
-        /// </summary>
-        public Board Board { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Piece"/> class.

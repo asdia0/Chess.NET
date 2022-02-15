@@ -10,21 +10,6 @@
     public class Board
     {
         /// <summary>
-        /// Gets or sets the list of <see cref="Square"/>s belonging to the <see cref="Board"/>.
-        /// </summary>
-        public List<Square> Squares { get; set; }
-
-        /// <summary>
-        /// Gets or sets the list of <see cref="Piece"/>s belonging to the <see cref="Board"/>.
-        /// </summary>
-        public List<Piece> Pieces { get; set; }
-
-        /// <summary>
-        /// Gets or sets the colour to move next.
-        /// </summary>
-        public Colours Turn { get; set; }
-
-        /// <summary>
         /// Gets or sets the rights to castle.
         /// </summary>
         public CastlingAvailability CastlingAvailability { get; set; }
@@ -33,11 +18,6 @@
         /// Gets or sets the en passant target (holy hell!) square.
         /// </summary>
         public Square EnPassantTarget { get; set; }
-
-        /// <summary>
-        /// Gets or sets the number of half moves since the last capture or pawn advance.
-        /// </summary>
-        public int HalfMoves { get; set; }
 
         /// <summary>
         /// Gets or sets the Forsyth-Edwards Notation for the current board position.
@@ -183,14 +163,34 @@
         }
 
         /// <summary>
+        /// Gets or sets the game the board is being played in.
+        /// </summary>
+        public Game Game { get; set; }
+
+        /// <summary>
+        /// Gets or sets the number of half moves since the last capture or pawn advance.
+        /// </summary>
+        public int HalfMoves { get; set; }
+
+        /// <summary>
         /// Gets or sets the number of whole moves played. Starts at 1.
         /// </summary>
         public int Moves { get; set; }
 
         /// <summary>
-        /// Gets or sets the game the board is being played in.
+        /// Gets or sets the list of <see cref="Piece"/>s belonging to the <see cref="Board"/>.
         /// </summary>
-        public Game Game { get; set; }
+        public List<Piece> Pieces { get; set; }
+
+        /// <summary>
+        /// Gets or sets the list of <see cref="Square"/>s belonging to the <see cref="Board"/>.
+        /// </summary>
+        public List<Square> Squares { get; set; }
+
+        /// <summary>
+        /// Gets or sets the colour to move next.
+        /// </summary>
+        public Colours Turn { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Board"/> class with standard dimensions and pieces.

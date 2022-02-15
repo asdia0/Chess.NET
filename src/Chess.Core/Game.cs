@@ -13,11 +13,6 @@
         public Board Board { get; set; }
 
         /// <summary>
-        /// Gets or sets the list of <see cref="Core.Move"/>s played.
-        /// </summary>
-        public List<Move> MoveList { get; set; }
-
-        /// <summary>
         /// Gets the list of <see cref="Core.Move"/>s possible in the current position.
         /// </summary>
         public List<Move> LegalMoves
@@ -30,9 +25,9 @@
         }
 
         /// <summary>
-        /// Gets or sets the way the <see cref="Game"/> terminated.
+        /// Gets or sets the list of <see cref="Core.Move"/>s played.
         /// </summary>
-        public Terminations Termination { get; set; }
+        public List<Move> MoveList { get; set; }
 
         /// <summary>
         /// Gets or sets the outcome of the <see cref="Game"/>.
@@ -50,6 +45,11 @@
                 return string.Empty;
             }
         }
+
+        /// <summary>
+        /// Gets or sets the way the <see cref="Game"/> terminated.
+        /// </summary>
+        public Terminations Termination { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Game"/> class.
@@ -71,7 +71,6 @@
         /// <param name="move">The <see cref="Move"/> to play.</param>
         public void Play(Move move)
         {
-
         }
     }
 }
