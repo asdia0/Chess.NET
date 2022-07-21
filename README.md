@@ -1,6 +1,6 @@
-# Chess.NET
+# Chess
 
-Chess.NET is a chess library for C#. It is currently under development.
+Chess is a chess library for C#. It is currently under development.
 
 ## Features
 
